@@ -14,7 +14,35 @@
 
 
 function parseStudents(input) {
+    if (!input) return [];
+
+    return input.split('\n')
+
+    .filter(line => line.split('\t').length === 3)
     
+    .filter(line => {
+        const name = line.split('\t')[0];
+        return name && name.length > 0 && name.length <= 25;
+    })
+
+    .filter(line => {
+        const ects = parseInt(line.split('\t')[1]);
+        return Number.isInteger(ects) && ects >= 0 && ects <= 200;
+    })
+
+    .filter(line => {
+        const active = line.split('\t')[2];
+        return active === 'aktywny' || active === 'nieaktywna' || active === 'aktywna' || active === 'nieaktywny';
+    })
+
+    .map(line => {
+        const [name, ects, active] = line.split('\t');
+        return {
+            name: name,
+            ects: parseInt(ects),
+            active: active === 'aktywny' || active === 'aktywna'
+        };
+    });
 }
 
 const studentLines = "Adam\t123\taktywny\nEwa\t34\tnieaktywna\nRoman\t56\taktywny\nKazik\t-34\taktyw\nBogdan\tfalse";

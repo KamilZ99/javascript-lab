@@ -4,6 +4,13 @@
 
 function *evenNumbers(n, m){
     
+    if (n % 2 !== 0) n++;
+    
+    for (let i = n; i <= m; i += 2) {
+        yield i;
+    }
+
+
 }
 
 let sum = 0;

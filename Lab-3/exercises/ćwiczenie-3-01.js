@@ -4,9 +4,18 @@
  * Zastosuj funkcje strzałkowe (flatMap)
  */
 
-function largestNumber(arr){
+function largestNumber(arr) {
+ 
+    const flatArray = arr.flatMap(subArr => subArr);
     
+    if (flatArray.length === 0) {
+        return undefined;
+    }
+    
+    return Math.max(...flatArray);
 }
+
+
 
 let arr1 = [[1, 2, 3, 5], [2, 6, 8], [1, 67], [4, 6, 98]];
 if (largestNumber(arr1) === 98){

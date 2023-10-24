@@ -11,8 +11,19 @@
  * 'Impossible to complete the transaction. Amount is negative!'  
  */
 
-function makeTransaction(transaction){
-    
+function makeTransaction(transaction) {
+    if (!transaction.hasOwnProperty('amount')) {
+        throw new Error('Impossible to complete the transaction. Absent property amount in transaction!');
+    }
+    if (transaction.amount < 0) {
+        throw new Error('Impossible to complete the transaction. Amount is negative!');
+    }
+    if (!transaction.hasOwnProperty('sourceAccount')) {
+        throw new Error('Impossible to complete the transaction. Absent property sourceAccount in transaction!');
+    }
+    if (!transaction.hasOwnProperty('targetAccount')) {
+        throw new Error('Impossible to complete the transaction. Absent property targetAccount in transaction!');
+    }
 }
 
 try {
