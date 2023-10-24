@@ -86,7 +86,7 @@ let copy = Vehicle.copy(car);
 console.log(copy);
 
 let map = new Map();
-map.set(1, car);
+map.set({name: "123"}, car);
 map.set(2, {name: "adam"});
 console.log(map.size);
 console.log(map);
@@ -94,3 +94,29 @@ console.log(map.get(1));
 console.log(map.has(3));
 map.delete(1);
 console.log(map);
+let objMap = {};
+objMap["1"] = car;
+objMap["2"] = {name: "Adam"};
+delete objMap["1"];
+console.log(objMap);
+
+let set = new Set();
+set.add("Adam");
+set.add(car);
+set.delete("Ewa");
+set.has("Adam");
+console.log(set.has("Adam"));
+
+//oblicz ile razy kady z łańcuchów występuje w tablicy names 
+let names = ["Ada", "Ewa", "Karol", "Ewa", "Adam", "Ada", "Ewa"];
+let uniqueNames = new Set(names);
+
+let mapCounter = new Map();
+
+for (let item of uniqueNames){
+   let counter =  names.filter((x) => x===item).length;
+    mapCounter.set(item, counter)
+}
+
+console.log(mapCounter);
+
